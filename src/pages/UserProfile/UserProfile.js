@@ -53,14 +53,6 @@ const UserProfile = (props) => {
   const { auth } = props.location.state; // pulls out the auth from the state passed by <Link/> in react router
   const thisUser = useSelector(state => state.users.usersByUid[auth])
 
-  // const thisUserPosts = useSelector(state => state.posts.postsByUids, postsByUids => postsByUids.filter(post => post.authorUid == auth))
-  // let userPostLength = Object.keys(thisUserPosts).length;
-  // let Posts = [];
-  // for (const post in thisUserPosts) {
-  //     Posts.push(post)
-  // }
-
-
 
   return (
     <Container maxWidth="sm">

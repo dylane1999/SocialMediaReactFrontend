@@ -195,8 +195,7 @@ const AppLayout = (props) => {
       );
     }, 10000);
     return () => clearInterval(interval);
-    //(username, users, posts, home, explore)
-  }); // includes empty dependency array
+  });
 
   const GetSidebarMarginSize = () => {
     if (screenLarge) {

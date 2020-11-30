@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Avatar from "components/Avatar";
 import * as Routes from "routes";
 import { useStore } from "store";
+import { connect, useSelector } from "react-redux";
 import exit from "../../img/exitIcon.svg";
 import Default from "../../img/default-pic.png"
 
@@ -31,14 +32,24 @@ const AvatarWrapper = styled.div`
 `;
 
 const PostAvatar = (props) => {
+  const thisUser = useSelector((state) => state.users.usersByUid[props.auth.userUid]);
+
 
   return (
     <Wrapper>
       <img src={exit} alt="exit" onClick={props.buttonClick} />
-      <AvatarWrapper><Avatar image={Default} size={150} /> </AvatarWrapper>
+      <AvatarWrapper><Avatar image={thisUser.avatar} size={150} /> </AvatarWrapper>
       
     </Wrapper>
   );
 };
 
-export default PostAvatar;
+
+function mapStatetoProps(state) {
+  return {
+    auth: state.auth,
+    users: state.users
+  };
+}
+
+export default connect(mapStatetoProps)(PostAvatar);
